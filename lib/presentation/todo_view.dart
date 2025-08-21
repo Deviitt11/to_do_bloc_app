@@ -23,7 +23,26 @@ class TodoView extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        content: TextField(controller: textController),
+        
+        // título del díalogo
+        title: const Text("Add new task"),
+        content: TextField(
+          controller: textController,
+
+          // estukis para texto en tema oscuro
+          style: const TextStyle(color: Colors.white),
+          cursorColor: Theme.of(context).colorScheme.primary,
+          decoration: const InputDecoration(
+            hintText: "Write your task...",
+            hintStyle: TextStyle(color: Colors.white54),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white24),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white70),
+            ),
+          ),
+        ),
         actions: [
 
           // btn cancelar
@@ -49,11 +68,19 @@ class TodoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // tema oscuro
+    final theme = Theme.of(context);
+
     // cubit todo
     final todoCubit = context.read<TodoCubit>();
 
     // SCAFFOLD
     return Scaffold(
+
+      // AppBar con el título centrado
+      appBar: AppBar(
+        title: const Text("TO DO LIST"),
+      ),
 
       // FAB
       floatingActionButton: FloatingActionButton(
@@ -64,6 +91,16 @@ class TodoView extends StatelessWidget {
       // BLOC BUILDER
       body: BlocBuilder<TodoCubit, List<Todo>>(
         builder: (context, todos) {
+
+          // estado vacío elegante si la lista está vacía
+          if(todos.isEmpty) {
+            return Center(
+              child: Text(
+                "No tasks yet",
+                style: theme.textTheme.titleMedium?.copyWith(color: Colors.white54),
+              ),
+            );
+          }
 
           // list view
           return ListView.builder(
@@ -77,7 +114,14 @@ class TodoView extends StatelessWidget {
               return ListTile(
 
                 // texto
-                title: Text(todo.text),
+                title: Text(
+                  todo.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                    decoration: todo.isCompleted ? TextDecoration.lineThrough : null,
+                    decorationColor: Colors.white54,
+                  ),
+                ),
 
                 // check box
                 leading: Checkbox(
@@ -88,6 +132,7 @@ class TodoView extends StatelessWidget {
                 // btn delete
                 trailing: IconButton(
                   icon: const Icon(Icons.cancel),
+                  color: Colors.white70, // icono color tenue
                   onPressed: () => todoCubit.deleteTodo(todo),
                 ),
               );
