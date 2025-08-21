@@ -44,7 +44,6 @@ Task management app built with **Flutter** and **Dart**, following **Clean Archi
 Data persistence is handled with **Isar Database**, providing fast and efficient performance on mobile devices.
 
 ## 📸 Screenshots
-*(Add your app screenshots here, for example in `assets/screenshots/`)*
 
 | Task list | Dark theme |
 |-----------|------------|
@@ -67,7 +66,7 @@ Data persistence is handled with **Isar Database**, providing fast and efficient
 ## ▶️ Run the project
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/to_do_bloc_app.git
+git clone https://github.com/deviitt11/to_do_bloc_app.git
 
 # Enter the project folder
 cd to_do_bloc_app
