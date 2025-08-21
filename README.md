@@ -36,6 +36,7 @@ flutter pub get
 
 # Ejecutar en modo debug
 flutter run
+```
 
 # 📝 To Do App (to_do_bloc_app)
 
@@ -76,4 +77,4 @@ flutter pub get
 
 # Run in debug mode
 flutter run
-
+```
