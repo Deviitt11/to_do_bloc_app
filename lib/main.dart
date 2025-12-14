@@ -89,7 +89,7 @@ class ToDoBlocApp extends StatelessWidget {
       ),
 
       // diálogos oscuros para inputs
-      dialogTheme: const DialogTheme(
+      dialogTheme: const DialogThemeData(
         backgroundColor: Color(0xFF111113),
         surfaceTintColor: Colors.transparent,
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
